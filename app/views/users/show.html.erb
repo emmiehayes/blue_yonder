@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="/index.css.scss"/>
+    <link href="https://fonts.googleapis.com/css?family=Raleway:100" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+  </head>
+    <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+      <div class="navbar-start">
+        Welcome <%=@user.name%>!
+      </div>
+      <div class="navbar-end">
+        <%= link_to "Home", user_path(@user), class: "navbar-item"%>
+        <%= link_to "Edit Account", edit_user_path(@user), class: "navbar-item"%>
+        <%= link_to 'Logout', '/logout', class: "navbar-item"%>
+      </div>
+    </nav>
+  <body>
+  </br>
+    <div class="tile is-ancestor">
+      <div class="tile is-vertical is-8">
+        <div class="tile">
+          <div class="tile is-parent is-vertical">
+            <article class="tile is-child notification is-danger">
+              <p class="title">HIGH TEMP:</p>
+              <div class="field">
+              <div class="control">
+                <div class="select is-medium, is-danger">
+                  <select>
+                    <option>High Temperature</option>
+                    <option>numbers go here</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            </article>
+            <article class="tile is-child notification is-info">
+              <p class="title">LOW TEMP:</p>
+                <div class="control">
+                  <div class="select is-medium, is-link">
+                    <select>
+                      <option>High Temperature</option>
+                      <option>numbers go here</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+          <div class="tile is-parent">
+              <p class="subtitle"></p>
+              <figure class="image is-5by5">
+                <img src="https://cl.ly/sxY3/[068ef12cf60169ce2cb3d385726e8b48]_Screen%20Shot%202018-07-12%20at%207.24.41%20PM.jpg", alt="yonder logo">
+              </figure>
+          </div>
+        </div>
+        <div class="tile is-parent">
+          <article class="tile is-child notification is-primary">
+            <p class="title">FAVORITE SPOTS</p>
+            <div class="content">
+              <!-- Content -->
+            </div>
+          </article>
+        </div>
+      </div>
+      <div class="tile is-parent">
+        <article class="tile is-child notification is-warning">
+          <div class="content">
+            <p class="title">TODAY'S OPTIONS</p>
+            <div class="content">
+              <!-- Content -->
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </body>
+</html>
