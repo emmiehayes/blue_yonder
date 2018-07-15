@@ -11,10 +11,11 @@ describe 'Users' do
 
     visit user_path(user_1)
 
-    select user_1.high_pref, from: :high_temperature
-    select user_1.low_pref, from: :low_temperature
+    select user_1.high_pref, from: "High Temperature"
+    select user_1.low_pref, from: "Low Temperature"
 
     expect(current_path).to eq(user_path(user_1))
     expect(page).to have_content("Boulder")
     expect(page).to_not have_content("Denver")
   end
+end

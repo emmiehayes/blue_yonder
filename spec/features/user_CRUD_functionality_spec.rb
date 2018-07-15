@@ -18,6 +18,10 @@ describe 'Users' do
 
     expect(current_path).to eq(user_path(1))
     expect(page).to have_content("Welcome #{name}!")
+    expect(page).to have_content('Edit Account')
+    expect(page).to have_content('Logout')
+    expect(page).to have_content('Home')
+    expect(page).to have_content('Favorites')
   end
 
   it 'can edit their account by updating a form' do
