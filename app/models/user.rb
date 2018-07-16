@@ -1,7 +1,10 @@
 class User < ApplicationRecord
-  has_secure_password
-  validates_presence_of :name, :password_digest, :high_pref, :low_pref
-  validates_presence_of :email_address, uniqueness: true
+  validates_presence_of :name, :high_pref, :low_pref
+  validates :email_address, uniqueness: true, presence: true
+  validates_presence_of :password, require: true
+
   has_many :favorites
   has_many :locations, through: :favorites
+
+  has_secure_password
 end
