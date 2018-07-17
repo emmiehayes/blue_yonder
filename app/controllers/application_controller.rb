@@ -8,4 +8,8 @@ class ApplicationController < ActionController::Base
     #as long as the request is active, the current user will be available
     end
   end
+
+  def current_admin?
+    current_user && current_user.admin?
+  end
 end

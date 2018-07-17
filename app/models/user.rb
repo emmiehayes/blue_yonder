@@ -8,8 +8,6 @@ class User < ApplicationRecord
   has_many :favorites
   has_many :locations, through: :favorites
 
-end
+  enum role:['default', 'admin']
 
-=begin
-   tried adding this and it doesn't work: validates_presence_of :password, :on => :create
-=end
+end
