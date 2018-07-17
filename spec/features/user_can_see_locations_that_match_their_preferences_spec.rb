@@ -13,7 +13,6 @@ describe 'populate locations list' do
     fill_in 'user_low_pref', with: 60
 
     click_on 'Submit'
-save_and_open_page
 
     expect(current_path).to eq(user_path(user))
     expect(page).to_not have_content(location_1.nick_name)
