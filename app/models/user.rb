@@ -9,5 +9,4 @@ class User < ApplicationRecord
   has_many :locations, through: :favorites
 
   enum role:['default', 'admin']
-
 end

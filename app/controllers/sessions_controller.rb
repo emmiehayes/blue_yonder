@@ -7,7 +7,11 @@ class SessionsController < ApplicationController
     @user = User.find_by_email_address(params[:email_address])
     if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
-      redirect_to user_path(@user)
+      if current_admin?
+        redirect_to admin_dashboard_index_path
+      elsif current_user
+        redirect_to user_path(@user)
+      end
     else
       render :new
     end

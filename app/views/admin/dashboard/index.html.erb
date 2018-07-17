@@ -1,3 +1,12 @@
+</head>
+  <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+    <div class="navbar-start">
+      <h1>ADMINISTRATOR</h1>
+    </div>
+    <div class="navbar-end">
+      <%= link_to "Log Out", logout_path, class: "navbar-item"%>
+    </div>
+  </nav>
 <h1> All Users </h1>
 <% @users.each do |user| %>
 <% if user.role != 'admin' %>
