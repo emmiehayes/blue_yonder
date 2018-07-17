@@ -29,6 +29,14 @@ class UsersController < ApplicationController
     redirect_to user_path(@user)
   end
 
+  def destroy
+    if current_admin?
+      @user = User.find(params[:id])
+      @user.destroy
+      redirect_to admin_dashboard_index_path
+    end
+  end
+
   private
 
   def user_params

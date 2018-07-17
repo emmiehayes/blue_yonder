@@ -33,8 +33,8 @@ describe 'user visits dashboard index page' do
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
       visit admin_dashboard_index_path
-      click_link 'Delete User'
-
+      save_and_open_page
+      click_button 'Delete User'
       expect(page).to_not have_content('Bob')
       expect(page).to_not have_content('bob@gmail.com')
     end
