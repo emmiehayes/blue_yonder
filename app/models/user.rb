@@ -9,4 +9,13 @@ class User < ApplicationRecord
   has_many :locations, through: :favorites
 
   enum role:['default', 'admin']
+
+  def self.total_count
+    count
+  end
+
+  def self.newest_user_created_at
+    order(created_at: :asc).last.created_at
+  end
+
 end

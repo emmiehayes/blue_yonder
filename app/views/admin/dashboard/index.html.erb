@@ -9,9 +9,12 @@
   </nav>
 <h1> All Users </h1>
 <% @users.each do |user| %>
-<% if user.role != 'admin' %>
-<%= user.name %>
-<%= user.email_address %>
-<%= button_to 'Delete User', user_path(user), method: :delete, data:{confirm: "Are you sure you want to delete this user?"} %>
+  <% if user.role != 'admin' %>
+  <%= user.name %>
+  <%= user.email_address %>
+  <%= button_to 'Delete User', user_path(user), method: :delete, data:{confirm: "Are you sure you want to delete this user?"} %>
+  <% end %>
 <% end %>
-<% end %>
+
+<h1>Total Number of Users: <%= @users.total_count %></h1>
+<h1>Last User Registered On: <%= @users.newest_user_created_at %></h1>
