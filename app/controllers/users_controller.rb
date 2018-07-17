@@ -16,6 +16,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @locations = Location.all
   end
 
   def edit
@@ -24,13 +25,13 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    @user.update(user_params)
+    @user.update!(user_params)
     redirect_to user_path(@user)
   end
 
   private
 
   def user_params
-    params.require(:user).permit(:name, :email_address, :password)
+    params.require(:user).permit(:name, :email_address, :password, :high_pref, :low_pref)
   end
 end

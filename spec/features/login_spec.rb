@@ -15,7 +15,7 @@ and I should see a link that says "Log out"
 describe 'login workflow' do
 
   it 'allows registered users to log in successfully' do
-  user = User.create!(name: 'test', email_address: 'test@gmail.com', password: 'askdgjae')
+    user = User.create!(name: 'Emmie Hayes', email_address: 'emmie@google.com', password: 'asgaesdg', high_pref: 0, low_pref: 0)
 
     visit '/'
 

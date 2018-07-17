@@ -13,6 +13,7 @@ describe 'registration workflow' do
     click_on 'Sign Up'
 
     expect(current_path).to eq(new_user_path)
+    
     fill_in 'user[name]', with: name
     fill_in 'user[email_address]', with: email_address
     fill_in 'user[password]', with: password
@@ -25,7 +26,7 @@ describe 'registration workflow' do
 
   it 'submits registration with duplicate email_address' do
     email_address = 'test@gmail.com'
-    user = User.create!(name: 'test', email_address: 'test@gmail.com', password: 'askdgjae')
+    user = User.create!(name: 'Emmie Hayes', email_address: 'emmie@google.com', password: 'asgaesdg', high_pref: 0, low_pref: 0)
     count = User.count  #THIS TEST THAT THE FORM IS BEHAVING CORRECTLY
 
     visit '/'
