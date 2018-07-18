@@ -15,7 +15,7 @@ describe Location, type: :model do
 
   describe "class methods" do
     context '.temp_match' do
-      it 'can return the names of all locations that match user preferences' do
+      it 'returns the names of all locations that match user preferences' do
         user = User.create!(name: 'Emmie', email_address: 'emmie@gmail.com', password: 'test123', high_pref: 81, low_pref: 68)
         location_1 = Location.create!(nick_name: 'Denver', state: 'Colorado', high_temp: 100, low_temp: 90)
         location_2 = Location.create!(nick_name: 'Boulder', state: 'Colorado', high_temp: 80, low_temp: 70)

@@ -19,9 +19,9 @@ describe Favorite, type: :model do
       favorite_2 = Favorite.create!(user_id: 2, location_id: 2)
     end
 
-    context '.most_favorited' do
+    context '.group_by_location' do
       it 'returns the location that has been favorited by the most users' do
-        expect(Favorite.most_favorited).to eq({3=>1, 2=>2})
+        expect(Favorite.group_by_location).to eq({3=>1, 2=>2})
       end
     end
 
