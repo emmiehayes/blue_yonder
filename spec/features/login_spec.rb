@@ -23,7 +23,7 @@ end
 
 describe 'admin login workflow' do
   it 'allows registered admin to log in successfully' do
-    admin = User.create!(name: 'Emmie', email_address: 'emmie@gmail.com', password: 'password', role: 1)
+    admin = User.create!(name: 'Emmie', email_address: 'peace@gmail.com', password: 'password', role: 1)
 
     visit '/'
 
