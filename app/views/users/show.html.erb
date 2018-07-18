@@ -1,38 +1,40 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <link rel="stylesheet" type="text/css" href="/index.css.scss"/>
-    <link href="https://fonts.googleapis.com/css?family=Raleway:100" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
-  </head>
-    <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
-      <div class="navbar-start">
-        <h1>Welcome <%= @user.name%>!</h1>
-      </div>
-      <div class="navbar-end">
-        <%= link_to "Home", user_path(@user), class: "navbar-item"%>
-        <%= link_to "Edit Account", edit_user_path(@user), class: "navbar-item"%>
-        <%= link_to "Log Out", logout_path, class: "navbar-item"%>
-      </div>
-    </nav>
-  <body>
-    <%= form_for @user do |f| %>
+<nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-start">
+    <h1>Welcome <%= @user.name.capitalize%>!</h1>
+  </div>
+  <div class="navbar-end">
+    <%= link_to "Home", user_path(@user), class: "navbar-item"%>
+    <%= link_to "Edit Account", edit_user_path(@user), class: "navbar-item"%>
+    <%= link_to "Log Out", logout_path, class: "navbar-item"%>
+  </div>
+</nav>
 
-      <%= f.label :high_pref %>
-      <%= f.number_field :high_pref%>
+<%= form_for @user do |f| %>
 
-      <%= f.label :low_pref %>
-      <%= f.number_field :low_pref %>
+  <%= f.label :low_pref %>
+  <%= f.number_field :low_pref %>
 
-      <%= f.submit 'Submit'%>
+  <%= f.label :high_pref %>
+  <%= f.number_field :high_pref %>
+
+  <%= f.submit 'Submit' %>
+<% end %>
+
+
+<% if @user.preferences_valid? %>
+    <h3> Today's Options: </h3>
+    <% @locations.temp_match(@user).each do |location| %>
+        <%= location.nick_name %>, <%= location.state %>, <%= location.low_temp %>, <%= location.high_temp %>
+        <% unless location.users.include? @user %>
+          <%= link_to '<i class="fa fa-heart fa-1x"></i>'.html_safe, add_favorite_location_path(location), method: :post, title: 'Add to Favorites', id: 'favorite'   %>
+        <% end %>
       <% end %>
+  <% end %>
 
-      <h3>Today's Options:</h3>
-      <%= @locations.temp_match(@user).each do |location| %>
-        <%= location.nick_name %>
-        <%= location.state %>
-        <%= location.low_temp %>
-        <%= location.high_temp %>
-      <% end %>
-  <body>
-<html>
+    <h3> My Favorite Spots: </h3>
+    <% @locations.each do |location| %>
+      <% if location.users.include? @user %>
+        <%= location.nick_name %>, <%= location.state %>, <%= location.low_temp %>, <%= location.high_temp %>
+            <%= link_to '<i class="fa fa-heart fa-1x"></i>'.html_safe, remove_favorite_location_path(location), method: :delete %>
+    <% end %>
+<% end %>

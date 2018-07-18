@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-
+before_action :current_user, only: [:show, :edit, :update]
   def new
     @user = User.new
   end
@@ -25,15 +25,15 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    @user.update!(user_params)
+    @user.update(user_params)
     redirect_to user_path(@user)
   end
 
   def destroy
     if current_admin?
-    @user = User.find(params[:id])
-    @user.destroy
-    redirect_to admin_dashboard_index_path
+      @user = User.find(params[:id])
+      @user.destroy
+      redirect_to admin_dashboard_index_path
     end
   end
 

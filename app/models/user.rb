@@ -15,7 +15,15 @@ class User < ApplicationRecord
   end
 
   def self.newest_user_created_at
-    order(created_at: :asc).last.created_at
+    order(created_at: :asc).last.created_at.to_formatted_s
   end
 
+  def valid_preference_range
+    temperature_range = (1..100)
+    temperature_range.include?(high_pref) && temperature_range.include?(low_pref)
+  end
+
+  def preferences_valid?
+    valid_preference_range && low_pref <= high_pref
+  end
 end
