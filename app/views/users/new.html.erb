@@ -1,13 +1,45 @@
-<%= form_for @user do |f| %>
-
-<%= f.label :name%>
-<%= f.text_field :name%>
-
-<%= f.label :email_address%>
-<%= f.text_field :email_address%>
-
-<%= f.label :password%>
-<%= f.password_field :password%>
-
-<%= f.submit %>
-<% end %>
+<section class="hero is-light is-fullheight">
+  <div class="hero-body">
+    <div class="container has-text-centered">
+      <div class="column is-4 is-offset-4">
+        <div class="box">
+          <%= form_for @user do |f| %>
+          <figure class="image">
+            <img src="https://cl.ly/031w2V3B0C0x/[4130db11bafdb17bf72dbd8db8b8728f]_Screen%20Shot%202018-07-12%20at%207.22.10%20PM.jpg">
+          </figure>
+          <div class="field">
+            <label class="label"><%= f.label :name%></label>
+            <div class="control has-icons-left">
+              <%= f.text_field :name, class: 'input is-primary'%>
+              <span class="icon is-small is-left">
+                <i class="fas fa-user"></i>
+              </span>
+            </div>
+          </div>
+          <div class="field">
+            <label class="label"><%= f.label :email_address%></label>
+            <div class="control has-icons-left has-icons-right">
+              <%= f.text_field :email_address, class: 'input is-primary'%>
+              <span class="icon is-small is-left">
+                <i class="fas fa-envelope"></i>
+              </span>
+            </div>
+          </div>
+          <div class="field">
+            <label class="label"><%= f.label :password%></label>
+            <div class="control has-icons-left has-icons-right">
+              <%= f.password_field :password, class: 'input is-link'%>
+              <span class="icon is-small is-left">
+                <i class="fas fa-lock"></i>
+              </span>
+            </div>
+          </div>
+          <div class="field">
+            <p class="control"><%= f.submit class: "button is-info is-fullwidth"%></p>
+          </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
