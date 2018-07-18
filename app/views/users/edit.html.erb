@@ -1,13 +1,31 @@
-<%= form_for @user do |f| %>
-
-  <%= f.label :name %>
-  <%= f.text_field :name%>
-
-  <%= f.label :email_address %>
-  <%= f.email_field :email_address %>
-
-  <%= f.label :password %>
-  <%= f.password_field :password %>
-
-  <%= f.submit "Update" %>
-<% end %>
+<section class="hero is-light is-fullheight">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">Edit Your Account Details</h1>
+      <h2 class="subtitle">password not required</h2>
+      <%= form_for @user do |f| %>
+      <div class="field">
+        <div class="control">
+          <%= f.label :name %>
+          <%= f.text_field :name, class: "input is-medium is-grey" %>
+        </div>
+      </div>
+      <div class="field">
+        <div class="control">
+          <%= f.label :email %>
+          <%= f.email_field :email_address, class: "input is-medium is-grey" %>
+        </div>
+      </div>
+      <div class="field">
+        <div class="control">
+          <%= f.label :password %>
+          <%= f.password_field :password, class: "input is-medium is-grey" %>
+        </div>
+      </div>
+      <div class="field">
+        <p class="control"><%= f.submit 'Update', class: "button is-danger is-outlined"%></p>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</section>
