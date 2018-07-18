@@ -32,6 +32,12 @@ describe 'visiting dashboard index page' do
       expect(page).to have_content("#{@location.nick_name}")
       expect(page).to have_content("#{@location.state}")
     end
+
+    it 'deletes a default auser' do
+      click_button 'Delete Location'
+      expect(page).to_not have_content("#{@location.nick_name}")
+      expect(page).to_not have_content("#{@location.state}")
+    end
   end
 
   context 'as default user' do

@@ -10,4 +10,12 @@ class LocationsController < ApplicationController
     Favorite.find_by(user: current_user, location_id: params[:id]).destroy
     redirect_to user_path(current_user)
   end
+
+  def destroy
+    if current_admin?
+      @location = Location.find(params[:id])
+      @location.destroy
+      redirect_to admin_dashboard_index_path
+    end
+  end
 end

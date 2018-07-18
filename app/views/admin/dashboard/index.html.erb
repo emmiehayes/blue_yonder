@@ -1,20 +1,24 @@
-</head>
-  <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
-    <div class="navbar-start">
-      <h1>ADMINISTRATOR</h1>
-    </div>
-    <div class="navbar-end">
-      <%= link_to "Log Out", logout_path, class: "navbar-item"%>
-    </div>
-  </nav>
+<nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-start">ADMINISTRATOR</div>
+  <div class="navbar-end"><%= link_to "Log Out", logout_path, class: "navbar-item"%></div>
+</nav>
+
 <h1> All Users </h1>
 <% @users.each do |user| %>
   <% if user.role != 'admin' %>
   <%= user.name %>
   <%= user.email_address %>
-  <%= button_to 'Delete User', user_path(user), method: :delete, data:{confirm: "Are you sure you want to delete this user?"} %>
+  <%= button_to 'Delete User', user_path(user), method: :delete, data:{confirm: "Are you sure you want to delete user?"} %>
   <% end %>
 <% end %>
 
+<h1> All Locations </h1>
+<% @locations.each do |location| %>
+  <%= location.nick_name %>
+  <%= location.state %>
+  <%= button_to 'Delete Location', location_path(location), method: :delete, data:{confirm: "Are you sure you want to delete location?"} %>
+<% end %>
+
+<h1> Stats </h1>
 <h1>Total Number of Users: <%= @users.total_count %></h1>
 <h1>Last User Registered On: <%= @users.newest_user_created_at %></h1>
