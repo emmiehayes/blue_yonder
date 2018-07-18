@@ -1,8 +1,9 @@
 class Admin::DashboardController < ApplicationController
-before_action :require_admin
+  before_action :require_admin
 
   def index
     @users = User.all
+    @locations = Location.all
   end
 
   private
