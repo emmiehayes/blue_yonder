@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-describe 'populate locations list' do
+describe 'populate locations list based on user preferences' do
 
-  it 'finds locations that meet user preferences' do
+  it 'returns locations per user preferences' do
     user = User.create!(name: 'Emmie Hayes', email_address: 'emmie@google.com', password: 'asgaesdg', high_pref: 0, low_pref: 0)
     location_1 = Location.create!(nick_name: 'Denver', state: 'Colorado', high_temp: '100', low_temp: '90')
     location_2 = Location.create!(nick_name: 'Boulder', state: 'Colorado', high_temp: '79', low_temp: '64')
@@ -11,7 +11,6 @@ describe 'populate locations list' do
     visit user_path(user)
     fill_in 'user_high_pref', with: 80
     fill_in 'user_low_pref', with: 60
-
     click_on 'Submit'
 
     expect(current_path).to eq(user_path(user))
