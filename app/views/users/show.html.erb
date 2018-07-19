@@ -16,52 +16,52 @@
     <div class="tile">
       <div class="tile is-parent is-vertical">
         <article class="tile is-child notification is-primary">
-            <p class="title">Search Locations</p>
-              <%= form_for @user do |f| %>
-              <div class="field">
-                <div class="control">
-                  <%= f.label :Low_preference %>
-                  <%= f.number_field :low_pref, class: "input is-medium is-grey" %>
-                </div>
-              </div>
-              <div class="field">
-                <div class="control">
-                  <%= f.label :high_preference %>
-                  <%= f.number_field :high_pref, class: "input is-medium is-grey" %>
-                </div>
-              </div>
-              <div class="field">
-                <p class="control"><%= f.submit 'Update', class: "button is-white is-outlined"%></p>
-              </div>
-            <% end %>
-          </article>
-        </div>
-        <div class="tile is-parent">
-          <article class="tile is-child notification is-danger">
-            <p class="title"><%=@user.name.capitalize%>'s Favorite Spots</p>
-            <div class="content">
-              <% @locations.each do |location| %>
-                <p><% if location.users.include? @user %>
+          <p class="title">Search Locations</p>
+          <%= form_for @user do |f| %>
+          <div class="field">
+            <div class="control">
+              <%= f.label :Low_preference %>
+              <%= f.number_field :low_pref, class: "input is-medium is-grey" %>
+            </div>
+          </div>
+          <div class="field">
+            <div class="control">
+              <%= f.label :high_preference %>
+              <%= f.number_field :high_pref, class: "input is-medium is-grey" %>
+            </div>
+          </div>
+          <div class="field">
+            <p class="control"><%= f.submit 'Update', class: "button is-white is-outlined"%></p>
+          </div>
+          <% end %>
+        </article>
+      </div>
+      <div class="tile is-parent">
+        <article class="tile is-child notification is-danger">
+          <p class="title"><%=@user.name.capitalize%>'s Favorite Spots</p>
+          <div class="content">
+            <% @locations.each do |location| %>
+            <p><% if location.users.include? @user %>
               <%= location.nick_name %>, <%= location.state %>, <%= location.low_temp %>, <%= location.high_temp %>
               <%= link_to '<i class="fa fa-heart fa-1x"></i>'.html_safe, remove_favorite_location_path(location), method: :delete %>
+              <% end %>
             <% end %>
-          <% end %>
-        </div>
-      </article>
-    </div>
-    <div class="tile is-parent ">
-      <article class="tile is-child notification is-info">
+          </div>
+        </article>
+      </div>
+      <div class="tile is-parent ">
+        <article class="tile is-child notification is-info">
           <p class="title">Today's Options</p>
           <div class="content">
-          <% if @user.preferences_valid? %>
+            <% if @user.preferences_valid? %>
             <p><% @locations.temp_match(@user).each do |location| %>
-            <%= location.nick_name %>, <%= location.state %>, <%= location.low_temp %>, <%= location.high_temp %>
+              <%= location.nick_name %>, <%= location.state %>, <%= location.low_temp %>, <%= location.high_temp %>
               <% unless location.users.include? @user %>
               <%= link_to '<i class="fa fa-heart fa-1x"></i>'.html_safe, add_favorite_location_path(location), method: :post, title: 'Add to Favorites', id: 'favorite'%>
               <% end %></p>
             <% end %>
           <% end %>
-          </div>
         </div>
-      </article>
-    </div>
+      </div>
+    </article>
+</div>
