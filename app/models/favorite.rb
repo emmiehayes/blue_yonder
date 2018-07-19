@@ -10,7 +10,7 @@ class Favorite < ApplicationRecord
     distinct.pluck(:user_id).count
   end
 
-  def self.most_favorited
+  def self.group_by_location
     group(:location_id).count
   end
 end

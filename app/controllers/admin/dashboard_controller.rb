@@ -4,6 +4,7 @@ class Admin::DashboardController < ApplicationController
   def index
     @users = User.all
     @locations = Location.all
+    @favorites = Favorite.group_by_location
   end
 
   private

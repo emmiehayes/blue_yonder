@@ -15,7 +15,7 @@ class User < ApplicationRecord
   end
 
   def self.newest_user_created_at
-    order(created_at: :asc).last.created_at.to_formatted_s
+    order(created_at: :asc).last.created_at.strftime("%d %b. %Y")
   end
 
   def valid_preference_range

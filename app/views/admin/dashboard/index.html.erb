@@ -2,28 +2,63 @@
   <div class="navbar-start">ADMINISTRATOR</div>
   <div class="navbar-end"><%= link_to "Log Out", logout_path, class: "navbar-item"%></div>
 </nav>
-
-<h1> All Users </h1>
-<% @users.each do |user| %>
-  <% if user.role != 'admin' %>
-  <%= user.name %>
-  <%= user.email_address %>
-  <%= button_to 'Delete User', user_path(user), method: :delete, data:{confirm: "Are you sure you want to delete user?"} %>
-  <% end %>
-<% end %>
-
-<h1> All Locations </h1>
-<% @locations.each do |location| %>
-  <%= location.nick_name %>
-  <%= location.state %>
-  <%= button_to 'Delete Location', location_path(location), method: :delete, data:{confirm: "Are you sure you want to delete location?"} %>
-<% end %>
-
-<h1> Stats </h1>
-<h1>Total Number of Users: <%= @users.total_count %></h1>
-<h1>Last User Registered On: <%= @users.newest_user_created_at %></h1>
-
-<p>Location Favorited By:</p>
-<% @favorites.each do |location_id, count| %>
-<%= "#{location_id}- #{pluralize(count, 'user')}" %></br>
-<% end %>
+</br>
+<nav class="level">
+  <div class="level-item has-text-centered">
+    <div>
+      <p class="heading"><h1>Last User Registered On</h1></p>
+      <p class="title"><%= @users.newest_user_created_at %></p>
+    </div>
+  </div>
+    <div class="level-item has-text-centered">
+      <div>
+        <p class="heading">Total Number of Users</p>
+        <p class="title"><%= @users.total_count %></p>
+      </div>
+    </div>
+  <div class="level-item has-text-centered">
+    <div>
+      <p class="heading">Favorite Location</p>
+      <p class="title">Boulder, CO</p>
+    </div>
+  </div>
+</nav>
+<div class="tile is-ancestor">
+  <div class="tile is-vertical">
+    <div class="tile">
+      <div class="tile is-parent is-vertical">
+        <article class="tile is-child notification is-primary">
+          <p class="title">All Users</p>
+          <div class="field">
+            <% @users.each do |user| %>
+              <% if user.role != 'admin' %>
+              <%= user.email_address %>
+              <%= button_to 'Delete', user_path(user), method: :delete, data:{confirm: "Are you sure you want to delete user?"} %>
+              <% end %>
+            <% end %>
+          </div>
+        </article>
+      </div>
+      <div class="tile is-parent">
+        <article class="tile is-child notification is-danger">
+          <p class="title">All Locations</p>
+          <div class="content">
+          <% @locations.each do |location| %>
+            <%= location.nick_name %>
+            <%= location.state %>
+            <%= button_to 'Delete', location_path(location), method: :delete, data:{confirm: "Are you sure you want to delete location?"} %>
+          <% end %></br>
+          </div>
+        </article>
+      </div>
+      <div class="tile is-parent ">
+        <article class="tile is-child notification is-info">
+          <p class="title">Favorite Locations</p>
+          <div class="content">
+          <% @favorites.each do |location_id, count| %>
+          <%= "#{location_id}- #{pluralize(count, 'user')}" %></br>
+          <% end %>
+        </div>
+      </div>
+    </article>
+</div>
