@@ -19,7 +19,7 @@
           <div class="field">
             <label class="label"><%= label_tag :password%></label>
             <div class="control has-icons-left has-icons-right">
-              <%= password_field_tag :password, "", class: 'input is-link'%>
+              <%= password_field_tag :password, "", class: 'input is-primary'%>
               <span class="icon is-small is-left">
                 <i class="fas fa-lock"></i>
               </span>
@@ -29,6 +29,10 @@
             <p class="control"><%= submit_tag 'Log In', class: "button is-info is-fullwidth"%></p>
           </div>
           <% end %>
+        </br>
+          <div class="field">
+            <p class="control"><%= button_to 'Create Account', new_user_path, method: :get, class: "button is-info is-fullwidth"%></p>
+          </div>
         </div>
       </div>
     </div>

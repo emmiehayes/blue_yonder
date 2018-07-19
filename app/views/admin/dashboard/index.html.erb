@@ -24,7 +24,6 @@
 <h1>Last User Registered On: <%= @users.newest_user_created_at %></h1>
 
 <p>Location Favorited By:</p>
-@locations.each do |location|
 <% @favorites.each do |location_id, count| %>
 <%= "#{location_id}- #{pluralize(count, 'user')}" %></br>
 <% end %>
