@@ -1,24 +1,20 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Yonder is built using Ruby on Rails.  The essences of this app is to search weather based on a user temperature preferences.  Users can favorite locations for future reference. This was a solo project with a 1 week time cap.
 
-Things you may want to cover:
+Production App: https://blue-yonder.herokuapp.com/
 
-* Ruby version
+Ruby Version: 2.4.1
+Rails Version: 5.1.6
 
-* System dependencies
+Setup
+To run this project:
+git clone git@github.com:emmiehayes/blue_yonder.git
+cd blue_yonder
+bundle install
+rake db:{create,migrate}
+rails s
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Testing
+This project uses RSpec for testing and can be run with the command rspec
+You may need to rake db:test:prepare before running the tests.
