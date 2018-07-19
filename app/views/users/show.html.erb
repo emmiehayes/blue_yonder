@@ -1,40 +1,67 @@
 <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
-  <div class="navbar-start">
-    <h1>Welcome <%= @user.name.capitalize%>!</h1>
-  </div>
   <div class="navbar-end">
     <%= link_to "Home", user_path(@user), class: "navbar-item"%>
     <%= link_to "Edit Account", edit_user_path(@user), class: "navbar-item"%>
     <%= link_to "Log Out", logout_path, class: "navbar-item"%>
   </div>
 </nav>
-
-<%= form_for @user do |f| %>
-
-  <%= f.label :low_pref %>
-  <%= f.number_field :low_pref %>
-
-  <%= f.label :high_pref %>
-  <%= f.number_field :high_pref %>
-
-  <%= f.submit 'Submit' %>
-<% end %>
-
-
-<% if @user.preferences_valid? %>
-    <h3> Today's Options: </h3>
-    <% @locations.temp_match(@user).each do |location| %>
-        <%= location.nick_name %>, <%= location.state %>, <%= location.low_temp %>, <%= location.high_temp %>
-        <% unless location.users.include? @user %>
-          <%= link_to '<i class="fa fa-heart fa-1x"></i>'.html_safe, add_favorite_location_path(location), method: :post, title: 'Add to Favorites', id: 'favorite'   %>
-        <% end %>
-      <% end %>
-  <% end %>
-
-    <h3> My Favorite Spots: </h3>
-    <% @locations.each do |location| %>
-      <% if location.users.include? @user %>
-        <%= location.nick_name %>, <%= location.state %>, <%= location.low_temp %>, <%= location.high_temp %>
-            <%= link_to '<i class="fa fa-heart fa-1x"></i>'.html_safe, remove_favorite_location_path(location), method: :delete %>
-    <% end %>
-<% end %>
+</br>
+<nav class="level">
+  <div class="level-item has-text-centered">
+    <img src="https://cl.ly/sxY3/[068ef12cf60169ce2cb3d385726e8b48]_Screen%20Shot%202018-07-12%20at%207.24.41%20PM.jpg", alt="yonder logo", style="height: 300px;">
+  </div>
+</nav>
+<div class="tile is-ancestor">
+  <div class="tile is-vertical">
+    <div class="tile">
+      <div class="tile is-parent is-vertical">
+        <article class="tile is-child notification is-primary">
+            <p class="title">Search Locations</p>
+              <%= form_for @user do |f| %>
+              <div class="field">
+                <div class="control">
+                  <%= f.label :Low_preference %>
+                  <%= f.number_field :low_pref, class: "input is-medium is-grey" %>
+                </div>
+              </div>
+              <div class="field">
+                <div class="control">
+                  <%= f.label :high_preference %>
+                  <%= f.number_field :high_pref, class: "input is-medium is-grey" %>
+                </div>
+              </div>
+              <div class="field">
+                <p class="control"><%= f.submit 'Update', class: "button is-white is-outlined"%></p>
+              </div>
+            <% end %>
+          </article>
+        </div>
+        <div class="tile is-parent">
+          <article class="tile is-child notification is-danger">
+            <p class="title"><%=@user.name.capitalize%>'s Favorite Spots</p>
+            <div class="content">
+              <% @locations.each do |location| %>
+                <p><% if location.users.include? @user %>
+              <%= location.nick_name %>, <%= location.state %>, <%= location.low_temp %>, <%= location.high_temp %>
+              <%= link_to '<i class="fa fa-heart fa-1x"></i>'.html_safe, remove_favorite_location_path(location), method: :delete %>
+            <% end %>
+          <% end %>
+        </div>
+      </article>
+    </div>
+    <div class="tile is-parent ">
+      <article class="tile is-child notification is-info">
+          <p class="title">Today's Options</p>
+          <div class="content">
+          <% if @user.preferences_valid? %>
+            <p><% @locations.temp_match(@user).each do |location| %>
+            <%= location.nick_name %>, <%= location.state %>, <%= location.low_temp %>, <%= location.high_temp %>
+              <% unless location.users.include? @user %>
+              <%= link_to '<i class="fa fa-heart fa-1x"></i>'.html_safe, add_favorite_location_path(location), method: :post, title: 'Add to Favorites', id: 'favorite'%>
+              <% end %></p>
+            <% end %>
+          <% end %>
+          </div>
+        </div>
+      </article>
+    </div>
