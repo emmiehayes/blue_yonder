@@ -4,12 +4,12 @@ describe 'registration workflow' do
 
   it 'submits registration succesfully' do
 
-    name = 'Emmie'
-    email_address = 'emmie@google.com'
+    name = 'rob'
+    email_address = 'rspec@google.com'
     password = 'password'
 
     visit '/'
-    click_on 'Sign Up'
+    click_on 'Log In'
     expect(current_path).to eq(new_user_path)
 
     fill_in 'user[name]', with: name
@@ -27,12 +27,12 @@ describe 'registration workflow' do
     count = User.count
 
     visit '/'
-    click_on 'Sign Up'
+    click_on 'Create Account'
     expect(current_path).to eq(new_user_path)
 
     fill_in 'user[email_address]', with: email_address
     fill_in 'user[password]', with: '12345'
-    click_on 'Create User'
+    click_on 'Create Account'
     expect(current_path).to eq(users_path)
     expect(User.count).to eq(count)
   end

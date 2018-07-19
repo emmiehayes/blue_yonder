@@ -36,19 +36,19 @@ describe "class methods" do
       expect(Favorite.total_locations_favorited).to eq(2)
     end
   end
-  
-  # context '.total_users_with_a_favorite' do
-  #   it 'returns the total number users that have at least one favorite' do
-  #     user_1 = User.create!(name: 'Emmie', email_address: 'sample@gmail.com', password: 'test123')
-  #     user_2 = User.create!(name: 'Bob', email_address: 'example@gmail.com', password: 'test456')
-  #     user_3 = User.create!(name: 'Jane', email_address: 'jan@gmail.com', password: 'test789')
-  #     location_1 = Location.create!(nick_name: 'Vail', state: 'Colorado', high_temp: 70, low_temp: 50)
-  #     location_2 = Location.create!(nick_name: 'Boulder', state: 'Colorado', high_temp: 80, low_temp: 70)
-  #     location_3 = Location.create!(nick_name: 'Denver', state: 'Colorado', high_temp: 70, low_temp: 60)
-  #     favorite_1 = Favorite.create!(user_id: 1, location_id: 3)
-  #     favorite_2 = Favorite.create!(user_id: 1, location_id: 2)
-  #     favorite_3 = Favorite.create!(user_id: 2, location_id: 2)
-  #     expect(Favorite.total_users_with_a_favorite).to eq(2)
-  #   end
-  # end
+
+  context '.total_users_with_a_favorite' do
+    it 'returns the total number users that have at least one favorite' do
+      user_1 = User.create!(name: 'Emmie', email_address: 'sample@gmail.com', password: 'test123')
+      user_2 = User.create!(name: 'Bob', email_address: 'example@gmail.com', password: 'test456')
+      user_3 = User.create!(name: 'Jane', email_address: 'jan@gmail.com', password: 'test789')
+      location_1 = Location.create!(nick_name: 'Vail', state: 'Colorado', high_temp: 70, low_temp: 50)
+      location_2 = Location.create!(nick_name: 'Boulder', state: 'Colorado', high_temp: 80, low_temp: 70)
+      location_3 = Location.create!(nick_name: 'Denver', state: 'Colorado', high_temp: 70, low_temp: 60)
+      favorite_1 = Favorite.create!(user_id: 1, location_id: 3)
+      favorite_2 = Favorite.create!(user_id: 1, location_id: 2)
+      favorite_3 = Favorite.create!(user_id: 2, location_id: 2)
+      expect(Favorite.total_users_with_a_favorite).to eq(2)
+    end
+  end
 end
