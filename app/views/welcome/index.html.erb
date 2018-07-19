@@ -1,6 +1,45 @@
-<% unless current_user %>
-  <%= button_to 'Sign Up', new_user_path, method: :get  %>
-  <%= button_to 'Sign In', login_path, method: :get  %>
-<% else %>
-  <%= button_to 'Log Out', logout_path, method: :get %>
-<% end %>
+<section class="hero is-light is-fullheight">
+  <div class="hero-body">
+    <div class="container has-text-centered">
+      <div class="column is-4 is-offset-4">
+        <div class="box">
+          <%= form_tag login_path do%>
+          <figure class="image">
+            <img src="https://cl.ly/031w2V3B0C0x/[4130db11bafdb17bf72dbd8db8b8728f]_Screen%20Shot%202018-07-12%20at%207.22.10%20PM.jpg">
+          </figure>
+          <div class="field">
+            <label class="label"><%= label_tag :email%></label>
+            <div class="control has-icons-left has-icons-right">
+              <%= text_field_tag :email_address, "", class: 'input is-primary'%>
+              <span class="icon is-small is-left">
+                <i class="fas fa-envelope"></i>
+              </span>
+            </div>
+          </div>
+          <div class="field">
+            <label class="label"><%= label_tag :password%></label>
+            <div class="control has-icons-left has-icons-right">
+              <%= password_field_tag :password, "", class: 'input is-primary'%>
+              <span class="icon is-small is-left">
+                <i class="fas fa-lock"></i>
+              </span>
+            </div>
+          </div>
+          <div class="field">
+            <% unless current_user %>
+            <div class="field">
+              <p class="control"><%= button_to 'Sign Up', new_user_path, method: :get, class: "button is-info is-fullwidth"%></p>
+            </div>
+            <% else %>
+            <div class="field">
+              <p class="control"><%= button_to 'Log Out', logout_path, method: :get, class: "button is-link is-fullwidth"%></p>
+            </div>
+            <% end %>
+            <p class="control"><%= submit_tag 'Log In', class: "button is-link is-fullwidth"%></p>
+          </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
