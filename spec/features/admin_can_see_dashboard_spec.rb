@@ -88,3 +88,17 @@ describe 'as default user visiting the admin dashboard page' do
     end
   end
 end
+
+describe 'as visitor visiting the admin dashboard page' do
+  context 'only admin should be able to see admin dashboard page' do
+    it 'recieves 404 message' do
+
+      visit admin_dashboard_index_path
+
+      expect(page).to_not have_content('All Users')
+      expect(page).to_not have_content('All Locations')
+      expect(page).to_not have_content('Total Number of Users: 2')
+      expect(page).to have_content('The page you were looking for doesn\'t exist')
+    end
+  end
+end
