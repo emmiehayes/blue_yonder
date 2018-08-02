@@ -7,12 +7,16 @@ describe 'edit account workflow' do
     new_name = 'Change'
 
     visit user_path(user)
+    
     click_on 'Edit Account'
+
+    expect(current_path).to eq(edit_user_path(user))
+
     fill_in 'user[name]', with: new_name
-    click_on 'Update'
+    click_button 'Update'
 
     expect(current_path).to eq(user_path(user))
-    expect(page).to have_content("Welcome Change!")
+    expect(page).to have_content("Change's Favorites")
     expect(page).to_not have_content('Emmie')
   end
 end
