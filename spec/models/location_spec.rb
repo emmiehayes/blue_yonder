@@ -27,6 +27,11 @@ describe Location, type: :model do
 
         expect(Location.temp_match(@user)).to eq([@location_2,@location_4])
       end
+
+      it 'returns the total count for all locations in database' do
+
+        expect(Location.total_count).to eq(4)
+      end
     end
   end
 end
