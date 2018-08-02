@@ -1,5 +1,5 @@
 <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
-  <div class="navbar-start">ADMINISTRATOR</div>
+  <div class="navbar-start">ADMINISTRATOR: <%= current_user.name %></div>
   <div class="navbar-end"><%= link_to "Log Out", logout_path, class: "navbar-item"%></div>
 </nav>
 </br>
@@ -11,15 +11,21 @@
     </div>
   </div>
     <div class="level-item has-text-centered">
-      <div>
+      <div id='total_users'>
         <p class="heading">Total Number of Users</p>
         <p class="title"><%= @users.total_count %></p>
+      </div>
+    </div>
+    <div class="level-item has-text-centered">
+      <div id='total_locations'>
+        <p class="heading">Total Number of Locations</p>
+        <p class="title"><%= @locations.total_count %></p>
       </div>
     </div>
   <div class="level-item has-text-centered">
     <div>
       <p class="heading">Favorite Location</p>
-      <p class="title">Boulder, CO</p>
+      <p class="title"></p>
     </div>
   </div>
 </nav>
@@ -32,10 +38,12 @@
           <hr>
           <div class="field">
             <% @users.each do |user| %>
+            <div id='user-<%= user.id %>'>
               <% if user.role != 'admin' %>
               <%= user.email_address %>
               <%= button_to 'Delete', user_path(user), method: :delete, data:{confirm: "Are you sure you want to delete user?"} %>
               <% end %>
+            </div>
             <% end %>
           </div>
         </article>
@@ -46,9 +54,11 @@
           <hr>
           <div class="content">
           <% @locations.each do |location| %>
+          <div id='location-<%= location.id %>'>
             <%= location.nick_name %>
             <%= location.state %>
             <%= button_to 'Delete', location_path(location), method: :delete, data:{confirm: "Are you sure you want to delete location?"} %>
+          </div>
           <% end %></br>
           </div>
         </article>

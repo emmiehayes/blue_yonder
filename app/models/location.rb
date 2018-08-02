@@ -6,4 +6,8 @@ class Location < ApplicationRecord
   def self.temp_match(user)
     where(["high_temp <= ? and low_temp >= ?", user.high_pref, user.low_pref])
   end
+
+  def self.total_count
+    count
+  end
 end
