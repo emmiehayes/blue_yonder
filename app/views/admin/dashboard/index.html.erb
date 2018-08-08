@@ -5,34 +5,34 @@
 </br>
 <nav class="level">
   <div class="level-item has-text-centered">
-    <div>
-      <p class="heading"><h1>Last User Registered On</h1></p>
-      <p class="title"><%= @users.newest_user_created_at %></p>
+    <div id='total_users'>
+      <p class="heading">Total Number of Users</p>
+      <p class="title"><%= @users.total_count %></p>
     </div>
   </div>
-    <div class="level-item has-text-centered">
-      <div id='total_users'>
-        <p class="heading">Total Number of Users</p>
-        <p class="title"><%= @users.total_count %></p>
-      </div>
+  <div class="level-item has-text-centered">
+    <div id='total_locations'>
+      <p class="heading">Total Number of Locations</p>
+      <p class="title"><%= @locations.total_count %></p>
     </div>
-    <div class="level-item has-text-centered">
-      <div id='total_locations'>
-        <p class="heading">Total Number of Locations</p>
-        <p class="title"><%= @locations.total_count %></p>
-      </div>
-    </div>
+  </div>
   <div class="level-item has-text-centered">
     <div>
       <p class="heading">Favorite Location</p>
-      <p class="title"></p>
+      <p class="title"><%= @most_favorite %></p>
+    </div>
+  </div>
+  <div class="level-item has-text-centered">
+    <div>
+      <p class="heading"><h1>Last User Registered On</h1></p>
+      <p class="title"><%= @users.newest_user_created_at.to_date %></p>
     </div>
   </div>
 </nav>
 <div class="tile is-ancestor">
   <div class="tile is-vertical">
     <div class="tile">
-      <div class="tile is-parent is-vertical">
+      <div class="tile is-parent">
         <article class="tile is-child notification is-primary">
           <p class="title">All Users</p>
           <hr>
@@ -59,7 +59,7 @@
             <%= location.state %>
             <%= button_to 'Delete', location_path(location), method: :delete, data:{confirm: "Are you sure you want to delete location?"} %>
           </div>
-          <% end %></br>
+          <% end %>
           </div>
         </article>
       </div>

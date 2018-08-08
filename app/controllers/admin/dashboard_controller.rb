@@ -5,6 +5,7 @@ class Admin::DashboardController < ApplicationController
     @users = User.all
     @locations = Location.all
     @favorites = Favorite.group_by_location
+    @most_favorite = Favorite.most_favorite
   end
 
   private

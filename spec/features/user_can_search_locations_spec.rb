@@ -9,9 +9,10 @@ describe 'populate locations list based on user preferences' do
     location_3 = Location.create!(nick_name: 'Steamboat Springs', state: 'Colorado', high_temp: '75', low_temp: '65')
 
     visit user_path(user)
+
     fill_in 'user_high_pref', with: 80
     fill_in 'user_low_pref', with: 60
-    click_on 'Submit'
+    click_button 'Find Locations'
 
     expect(current_path).to eq(user_path(user))
     expect(page).to_not have_content(location_1.nick_name)
