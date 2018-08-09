@@ -21,22 +21,25 @@ describe "class methods" do
 
   context '.group_by_location' do
     it 'returns the location that has been favorited by the most users' do
-
-      expect(Favorite.group_by_location).to eq({3=>1, 2=>2})
+      expect(Favorite.group_by_location).to eq({"Denver"=>1, "Boulder"=>2})
     end
   end
 
   context '.total_locations_favorited' do
     it 'returns the total number of favorited locations' do
-      
       expect(Favorite.total_locations_favorited).to eq(2)
     end
   end
 
   context '.total_users_with_a_favorite' do
     it 'returns the total number users that have at least one favorite' do
-
       expect(Favorite.total_users_with_a_favorite).to eq(2)
+    end
+  end
+
+  context '.most_favorite' do
+    it 'returns the location nick_name for the most favorited by users' do
+      expect(Favorite.most_favorite).to eq('Boulder')
     end
   end
 end

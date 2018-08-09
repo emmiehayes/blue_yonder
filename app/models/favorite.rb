@@ -11,6 +11,12 @@ class Favorite < ApplicationRecord
   end
 
   def self.group_by_location
-    group(:location_id).count
+    joins(:location)
+    .group('locations.nick_name')
+    .count(:user_id)
+  end
+
+  def self.most_favorite
+    group_by_location.key(group_by_location.values.max)
   end
 end

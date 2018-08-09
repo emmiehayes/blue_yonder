@@ -10,4 +10,8 @@ class Location < ApplicationRecord
   def self.total_count
     count
   end
+
+  def self.most_favorite
+
+  end
 end

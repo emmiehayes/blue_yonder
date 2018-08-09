@@ -4,12 +4,12 @@ describe 'registration workflow' do
 
   it 'submits registration succesfully' do
 
-    name = 'rob'
+    name = 'Rspec'
     email_address = 'rspec@google.com'
-    password = 'password'
+    password = 'password22'
 
     visit '/'
-    click_on 'Log In'
+    click_on 'Create Account'
 
     expect(current_path).to eq(new_user_path)
 
@@ -19,7 +19,7 @@ describe 'registration workflow' do
     click_on 'Create User'
 
     expect(current_path).to eq(user_path(User.last))
-    expect(page).to have_content("Welcome #{User.last.name}!")
+    expect(page).to have_content("#{User.last.name}'s Favorite Spots")
   end
 
   it 'denies registration with duplicate email_address' do
