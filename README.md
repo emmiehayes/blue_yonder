@@ -3,7 +3,8 @@
 ###Yonder
 Built using Ruby on Rails.  
 
-The essence of this app is to search weather based on user temperature preference.  Users can favorite locations for future reference.
+The essence of this app is to search weather based on user temperature preference.  
+Users can favorite locations for future reference.
 This was a solo project with a 1 week time cap.
 
 Production App: https://blue-yonder.herokuapp.com/
@@ -11,7 +12,6 @@ Production App: https://blue-yonder.herokuapp.com/
 Ruby Version: 2.4.1
 
 Rails Version: 5.1.6
-
 
 To run this project:
 
@@ -21,10 +21,10 @@ To run this project:
    - rake db:{create, migrate}
    - rails s
 
-To create an account:
+Creating Accounts:
 
 - visit the /login page
-- passwords must be atleast 8 characters
+- passwords must be at least 8 characters
 
 Testing:
 

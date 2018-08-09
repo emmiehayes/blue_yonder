@@ -41,7 +41,7 @@
             <div id='user-<%= user.id %>'>
               <% if user.role != 'admin' %>
               <%= user.email_address %>
-              <%= button_to 'Delete', user_path(user), method: :delete, data:{confirm: "Are you sure you want to delete user?"} %>
+              <class="control"><%= button_to 'Delete', user_path(user), method: :delete, class: "button is-small is-inverted is-outlined is-primary", data:{confirm: "Are you sure you want to delete user?"} %></br>
               <% end %>
             </div>
             <% end %>
@@ -55,9 +55,8 @@
           <div class="content">
           <% @locations.each do |location| %>
           <div id='location-<%= location.id %>'>
-            <%= location.nick_name %>
-            <%= location.state %>
-            <%= button_to 'Delete', location_path(location), method: :delete, data:{confirm: "Are you sure you want to delete location?"} %>
+            <%= location.nick_name %>, <%= location.state %>
+            <class="control"><%= button_to 'Delete', location_path(location), method: :delete, class: "button is-small is-inverted is-outlined is-danger", data:{confirm: "Are you sure you want to delete location?"} %></br>
           </div>
           <% end %>
           </div>
