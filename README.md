@@ -1,6 +1,6 @@
 # README
 
-###Yonder
+### Yonder
 Built using Ruby on Rails.  
 
 The essence of this app is to search weather based on user temperature preference.  
